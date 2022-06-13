@@ -5,8 +5,9 @@ cpp-mutex-playground
 
 ### TODOs
 - [ ] study how to replace dangling mutex belongs to crashed / terminated process by new mutex
-  - [boost-single-application](boost-single-application)
-  - [win32-single-application](win32-single-application)
+  - [c++ - interprocess::named_upgradable_mutex - remains locked if process is killed - Stack Overflow](https://stackoverflow.com/questions/8501888/interprocessnamed-upgradable-mutex-remains-locked-if-process-is-killed)
+    - [boost-single-application](boost-single-application)
+    - [win32-single-application](win32-single-application)
 - [ ] compare boost mutex to std::mutex
 
 ### Reference
