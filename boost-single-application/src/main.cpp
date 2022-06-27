@@ -8,17 +8,31 @@ int main(int argc, char *argv[])
     using namespace std;
     using namespace boost::interprocess;
 
-    const char* mutex_name = "my.mutex.name";
+    constexpr auto mutex_name = "my.mutex.name";
+     
+
+
     try {
         // named_mutex::remove(mutex_name);
         // cin.get();
+
         named_mutex mutex(open_or_create, mutex_name);
         scoped_lock<named_mutex> lock(mutex, try_to_lock); // add try_to_lock to stop waiting to unlock
-        
+
         if(lock){
             cout << "hi it is locked" << endl;
             cin.get();
-            named_mutex::remove(mutex_name);
+
+            const int result_1 = atexit([](){
+                cout << "exiting" << endl;
+                named_mutex::remove(mutex_name);
+            });
+
+            if (result_1 != 0) {
+                cerr << "Registration failed\n";
+                return EXIT_FAILURE;
+            }
+            
             return EXIT_SUCCESS;
         } else {
             cout << "sorry it is locked by other process" << endl;
@@ -31,3 +45,5 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 }
+
+

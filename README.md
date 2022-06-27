@@ -8,6 +8,7 @@ cpp-mutex-playground
   - [c++ - interprocess::named_upgradable_mutex - remains locked if process is killed - Stack Overflow](https://stackoverflow.com/questions/8501888/interprocessnamed-upgradable-mutex-remains-locked-if-process-is-killed)
     - [boost-single-application](boost-single-application)
     - [win32-single-application](win32-single-application)
+  - **UPDATE**: `atexit` in normal termination can clean up mutex
 - [ ] compare boost mutex to std::mutex
 
 ### Reference
