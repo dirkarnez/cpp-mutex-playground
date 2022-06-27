@@ -8,7 +8,11 @@ cpp-mutex-playground
   - [c++ - interprocess::named_upgradable_mutex - remains locked if process is killed - Stack Overflow](https://stackoverflow.com/questions/8501888/interprocessnamed-upgradable-mutex-remains-locked-if-process-is-killed)
     - [boost-single-application](boost-single-application)
     - [win32-single-application](win32-single-application)
-  - **UPDATE**: `atexit` in normal termination can clean up mutex
+  - **UPDATE**
+    - `atexit` in normal termination (<kbd>Ctrl</kbd> + <kbd>C</kbd>) can clean up mutex
+    - Signal handlers may also work for normal termination
+      - [How to use signal handlers in C language?](https://linuxhint.com/signal_handlers_c_programming_language/)
+    - Anyway, process killing cannot trigger any cleaning, dangling mutex still there 
 - [ ] compare boost mutex to std::mutex
 
 ### Reference
