@@ -12,7 +12,37 @@ cpp-mutex-playground
     - `atexit` in normal termination (<kbd>Ctrl</kbd> + <kbd>C</kbd>) can clean up mutex
     - Signal handlers may also work for normal termination
       - [How to use signal handlers in C language?](https://linuxhint.com/signal_handlers_c_programming_language/)
-    - Anyway, process killing cannot trigger any cleaning, dangling mutex still there 
+    - Anyway, process killing cannot trigger any cleaning, dangling mutex still there
+  - **UPDATE 2023**
+    - OS can tell us if a system mutex is dangling:
+      - 1. Obtain a handle to the mutex: If you know the name of the mutex, you can use the `OpenMutex` function to obtain a handle to it. This function takes the desired access rights and the name of the mutex as parameters and returns a handle to the mutex if it exists.
+      
+      ```cpp
+      HANDLE hMutex = OpenMutex(SYNCHRONIZE, FALSE, L"MutexName");
+      ```
+      
+      - 2. Check if the handle is valid: The `OpenMutex` function will return a valid handle if the mutex exists and you have the necessary access rights. You can check if the handle is valid by comparing it to the `NULL` value.
+      
+      ```cpp
+      if (hMutex != NULL)
+      {
+          // Mutex exists and handle is valid
+          // The mutex is still active
+      }
+      else
+      {
+          // Mutex does not exist or handle is invalid
+          // The mutex is not active
+      }
+      ```
+      
+      - 3. Close the handle: After you have finished checking the mutex's status, it's important to close the handle using the `CloseHandle` function to release system resources.
+      
+      ```cpp
+      CloseHandle(hMutex);
+      ```
+
+By following these steps, you can determine if a mutex is still active on Windows using the Win32 API. Remember to handle errors appropriately and ensure that you have the necessary access rights to open the mutex.
 - [ ] compare boost mutex to std::mutex
 
 ### Reference
