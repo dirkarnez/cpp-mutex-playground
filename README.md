@@ -41,6 +41,12 @@ cpp-mutex-playground
       ```cpp
       CloseHandle(hMutex);
       ```
+  - **UPDATE 2024**
+      - don't trust chatgpt code above
+      - [使用 Mutex 物件 - Win32 apps | Microsoft Learn](https://learn.microsoft.com/zh-tw/windows/win32/sync/using-mutex-objects)
+        - implemented and working
+        - this article tells everything
+          - We can query mutex state
 
 By following these steps, you can determine if a mutex is still active on Windows using the Win32 API. Remember to handle errors appropriately and ensure that you have the necessary access rights to open the mutex.
 - [ ] compare boost mutex to std::mutex
