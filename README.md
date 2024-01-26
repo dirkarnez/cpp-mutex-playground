@@ -43,6 +43,8 @@ cpp-mutex-playground
       ```
   - **UPDATE 2024**
       - don't trust chatgpt code above
+      - [**C++多线程之使用Mutex和Critical_Section_std::mutex ccriticalsection-CSDN博客**](https://blog.csdn.net/xdrt81y/article/details/17005235)
+        - query mutex state function can be non-waiting
       - [使用 Mutex 物件 - Win32 apps | Microsoft Learn](https://learn.microsoft.com/zh-tw/windows/win32/sync/using-mutex-objects)
         - implemented and working
         - this article tells everything
